@@ -43,16 +43,22 @@ class CalcTool:
         y = self.func(x)
         return np.trapz(y, x)
 
-# Example usage
-if __name__ == "__main__":
-    # Example function: f(x) = x^2
-    def f(x):
-        return x ** 2
+# Example function: f(x) = x^2
+def f(x):
+    return x ** 2
 
+if __name__ == "__main__":
     calc_tool = CalcTool(f)
 
-    # Differentiate at x = 2
-    print("Derivative at x=2:", calc_tool.differentiate(2))
+    # Get user input for differentiation
+    try:
+        x_diff = float(input("Enter the point at which to differentiate (e.g., 2): "))
+        print("Derivative at x =", x_diff, ":", calc_tool.differentiate(x_diff))
 
-    # Integrate from 0 to 3
-    print("Integral from 0 to 3:", calc_tool.integrate(0, 3))
+        # Get user input for integration
+        a = float(input("Enter the lower bound of integration (e.g., 0): "))
+        b = float(input("Enter the upper bound of integration (e.g., 3): "))
+        print("Integral from", a, "to", b, ":", calc_tool.integrate(a, b))
+
+    except ValueError:
+        print("Please enter valid numerical values.")
